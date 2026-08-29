@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 
-st.title("Real Time Stoc Market Dashboard")
+st.title("Real Time Stock Market Dashboard")
 
 st.write(
     "Track and viisualize stock market data using"
@@ -132,6 +132,9 @@ data["MA50"] = data["Close"].rolling(50).mean()
 
 
 latest_price = float(data["Close"].iloc[-1])
+
+data = data.dropna(subset=["close"])
+latest_price = float(data["close"].iloc[-1])
 
 
 if len(data) >= 2:
